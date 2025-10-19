@@ -1,0 +1,162 @@
+/* シンプルで教育的なスタイル
+   - 目的：HTMLの構造を活かすため最小限のスタイリング
+   - 可読性を重視し、変数や簡単なレスポンシブ対応を行う
+*/
+
+/* カラーベース（シンプル） */
+:root{
+  --bg: #f8f9fb;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #666;
+  --accent: #2b8aef;
+  --max-width: 1100px;
+  --gap: 1rem;
+  --radius: 8px;
+}
+
+/* ベーシックリセット（簡易）*/
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Segoe UI", Arial;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.45;
+}
+
+/* コンテナ共通 */
+.container{
+  width: calc(100% - 2rem);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+/* ヘッダー */
+.site-header{
+  background:var(--card);
+  border-bottom:1px solid #e6e9ee;
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-size:1.2rem;
+  margin:0;
+}
+
+/* ナビ */
+.nav{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:0.75rem;
+}
+.nav a{
+  display:inline-block;
+  text-decoration:none;
+  color:var(--text);
+  padding:0.5rem 0.75rem;
+  border-radius:6px;
+}
+.nav a:hover{background:#f0f4fb}
+
+/* ヒーロー */
+.hero{
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
+  padding:2rem 0;
+}
+.hero h2{margin:0 0 0.5rem 0}
+.lead{color:var(--muted)}
+
+/* セクション */
+.section{padding:1.25rem 0}
+
+/* サービスリスト */
+.services-list{
+  display:flex;
+  gap:1rem;
+  padding:0;
+  margin:1rem 0 0 0;
+  list-style:none;
+  flex-wrap:wrap;
+}
+.services-list li{
+  background:var(--card);
+  padding:1rem;
+  border-radius:var(--radius);
+  box-shadow:0 1px 2px rgba(16,24,40,0.04);
+  flex:1 1 200px;
+}
+
+/* 物件カードグリッド */
+.properties-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:1rem;
+  margin-top:1rem;
+}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(16,24,40,0.06);
+  display:flex;
+  flex-direction:column;
+}
+.card img{width:100%; height:auto; display:block}
+.card-body{padding:0.75rem 1rem 1.25rem 1rem}
+.card-body h4{margin:0 0 0.25rem 0}
+.card-body p{margin:0 0 0.75rem 0; color:var(--muted)}
+
+/* ボタン風リンク */
+.button{
+  display:inline-block;
+  text-decoration:none;
+  color:var(--accent);
+  border:1px solid var(--accent);
+  padding:0.4rem 0.7rem;
+  border-radius:6px;
+  font-weight:600;
+}
+.button.primary{
+  background:var(--accent);
+  color:white;
+  border-color:var(--accent);
+}
+
+/* フォーム */
+form{max-width:720px}
+.form-row{margin-bottom:0.75rem; display:flex; flex-direction:column}
+label{font-weight:600; margin-bottom:0.25rem}
+input,textarea,select{
+  padding:0.5rem;
+  border:1px solid #d6dbe6;
+  border-radius:6px;
+  font-size:1rem;
+}
+.form-message{margin-top:0.5rem; color:var(--muted)}
+
+/* フッター */
+.site-footer{
+  padding:1rem 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:0.9rem;
+}
+
+/* レスポンシブ：狭い画面ではカラムを減らす */
+@media (max-width: 900px){
+  .properties-grid{grid-template-columns: repeat(2, 1fr)}
+  .services-list{flex-direction:column}
+}
+@media (max-width: 600px){
+  .properties-grid{grid-template-columns: 1fr}
+  .header-inner{flex-direction:column; gap:0.5rem; align-items:flex-start}
+  .nav{flex-wrap:wrap}
+}
